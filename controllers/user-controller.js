@@ -22,7 +22,7 @@ export const signup = async (req, res, next) => {
       email,
     });
   } catch (err) {
-    return console.log(err);
+    console.log(err);
   }
   if (existingUser) {
     return res
@@ -35,6 +35,7 @@ export const signup = async (req, res, next) => {
     name,
     email,
     password: hashedPassword,
+    posts: [],
   });
   try {
     await user.save();
@@ -52,7 +53,7 @@ export const login = async (req, res, next) => {
       email,
     });
   } catch (err) {
-    return console.log(err);
+    console.log(err);
   }
   if (!existingUser) {
     return res.status(404).json({ message: "Couldnt Find User By This Email" });

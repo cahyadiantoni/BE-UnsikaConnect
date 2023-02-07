@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import postRouter from "./routes/post-routes";
 import router from "./routes/user-routes";
 import dotenv from "dotenv";
 
@@ -8,6 +9,7 @@ const app = express();
 
 app.use(express.json());
 app.use("/api/user", router);
+app.use("/api/post", postRouter);
 const user = process.env.USER;
 const password = process.env.PASSWORD;
 mongoose
